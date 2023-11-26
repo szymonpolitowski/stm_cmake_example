@@ -1,6 +1,6 @@
 # STM Cmake Example
 
-Repozytorium pokazujące proste budowanie projektu wykorzystującego HAL przy pomocy CMake oraz Ninja.
+Repozytorium przedstawia proste budowanie projektu wykorzystującego HAL przy pomocy CMake oraz Ninja.
 
 Wymagane są:
 - CMake
