@@ -40,6 +40,15 @@ set (PROJECT_SOURCES
 
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
 
+target_link_libraries (${PROJECT_NAME} PRIVATE STM32_Drivers)
+
+add_custom_command(TARGET ${CMAKE_PROJECT_NAME} POST_BUILD COMMAND ${CMAKE_SIZE} $<TARGET_FILE:${CMAKE_PROJECT_NAME}>)
+
+
+
+
+
+
 # add_executable(${PROJECT_NAME} main.c Core/Startup/startup_stm32f446retx.s)
 
 # set (PROJECT_SOURCES
@@ -69,7 +78,7 @@ add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
 ################## PROJECT SETUP ######################################
 
 
-add_custom_command(TARGET ${CMAKE_PROJECT_NAME} POST_BUILD COMMAND ${CMAKE_SIZE} $<TARGET_FILE:${CMAKE_PROJECT_NAME}>)
+
 
 # add_compile_definitions (${PROJECT_DEFINES})
 # include_directories (${PROJECT_INCLUDES})
