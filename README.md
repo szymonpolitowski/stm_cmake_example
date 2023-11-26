@@ -1,16 +1,21 @@
 # STM Cmake Example
 
-Repozytorium z przykładowym wykorzystaniem Cmake z STM32.
+Repozytorium pokazujące proste budowanie projektu wykorzystującego HAL przy pomocy CMake oraz Ninja.
 
-Tworzenie szablonu przy pomocy STM32CubeIDE:
-1. Utwórz nowy projekt: `File -> New -> STM32 Cmake Project`
-2. Wybierz opcję: `Project from Cmake template`
-3. Podaj nazwę projektu oraz wybierz Template: `Executable`
-4. Wybierz właściwy MCU po czym kliknij Finish.
+Wymagane są:
+- CMake
+- Ninja
+- arm toolchain (gcc-arm-none-eabi)
+- wygenerowany project w STM32CubeIDE przy pomocy generatora 
 
----
+### Budowanie i kompilacja projektu
 
-Przygotowanie plików projektowych: `cmake -S . -B build -G Ninja -DCMAKE_TOOLCHAIN_FILE="cubeide-gcc.cmake"`
+Przygotowanie plików do kompilacji: `cmake -S . -B build -G Ninja -DCMAKE_TOOLCHAIN_FILE="cmake/arm-gcc-toolchain.cmake"`
 
-Budowanie projektu: `ninja -C build`
+Kompilacja projektu: `ninja -C build`
 
+### Instalacja wymaganych rozszerzeń (Linux)
+
+- CMake: `sudo apt-get -y install cmake`
+- Ninja: `sudo apt-get install ninja-build`
+- Arm toolchain: `sudo apt install gcc-arm-none-eabi`
