@@ -32,55 +32,17 @@ add_compile_definitions (STM32F446xx=1)
 add_subdirectory (Drivers)
 
 set (PROJECT_SOURCES
-    main.c
+    Core/Src/main.c
     Core/Startup/startup_stm32f446retx.s
+    Core/Src/stm32f4xx_hal_msp.c
+    Core/Src/stm32f4xx_it.c
     Core/Src/syscalls.c
     Core/Src/sysmem.c
+    Core/Src/system_stm32f4xx.c
 )
 
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
-
 target_link_libraries (${PROJECT_NAME} PRIVATE STM32_Drivers)
+target_include_directories (${PROJECT_NAME} PRIVATE Core/Inc)
 
 add_custom_command(TARGET ${CMAKE_PROJECT_NAME} POST_BUILD COMMAND ${CMAKE_SIZE} $<TARGET_FILE:${CMAKE_PROJECT_NAME}>)
-
-
-
-
-
-
-# add_executable(${PROJECT_NAME} main.c Core/Startup/startup_stm32f446retx.s)
-
-# set (PROJECT_SOURCES
-# 	# LIST SOURCE FILES HERE
-# 	Startup/startup_stm32f446retx.s
-# 	Sources/main.c
-# 	Sources/syscalls.c
-# 	Sources/sysmem.c
-
-
-# 	)
-
-# set (PROJECT_DEFINES
-# 	# LIST COMPILER DEFINITIONS HERE
-
-#     )
-
-# set (PROJECT_INCLUDES
-# 	# LIST INCLUDE DIRECTORIES HERE
-
-#     )
-
-############ MODIFY ACCORDING TO REQUIREMENTS) ########################
-
-#######################################################################
-
-################## PROJECT SETUP ######################################
-
-
-
-
-# add_compile_definitions (${PROJECT_DEFINES})
-# include_directories (${PROJECT_INCLUDES})
-
-
