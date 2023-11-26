@@ -6,3 +6,5 @@ build/
 .mxproject
 .project
 *.launch
+
+.vscode
