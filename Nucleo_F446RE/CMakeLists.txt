@@ -46,3 +46,15 @@ target_link_libraries (${PROJECT_NAME} PRIVATE STM32_Drivers)
 target_include_directories (${PROJECT_NAME} PRIVATE Core/Inc)
 
 add_custom_command(TARGET ${CMAKE_PROJECT_NAME} POST_BUILD COMMAND ${CMAKE_SIZE} $<TARGET_FILE:${CMAKE_PROJECT_NAME}>)
+
+# Flash
+find_program (STM32_Programmer STM32_Programmer_CLI) 
+
+message (STATUS "")
+if (STM32_Programmer)
+    message (STATUS "STM32 Programmer was found. You can flash board with 'program' target now.")
+else ()
+    message (STATUS "STM32 Programmer was not found!")
+endif ()
+
+add_custom_target (program COMMAND ${STM32_Programmer} --connect port=SWD --write $<TARGET_FILE:${PROJECT_NAME}> --verify -rst) # test
